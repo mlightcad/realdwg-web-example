@@ -1,0 +1,23 @@
+{
+  "name": "@mlightcad/realdwg-web-example",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@10.33.4",
+  "description": "RealDWG-Web SDK demo and DWG/DXF database viewer using the private @mlight-cad/dwg-converter",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@mlight-cad/dwg-converter": "^1.12.1",
+    "@mlightcad/data-model": "^1.12.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.2",
+    "vite": "^6.4.3",
+    "vite-plugin-static-copy": "^3.1.1"
+  }
+}

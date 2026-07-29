@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RealDWG-Web — Integration Guide</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body class="guide-page">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-name">RealDWG-Web</span>
+        <span class="brand-sub">Integration Guide</span>
+      </div>
+      <div class="topbar-actions">
+        <a class="btn" href="./index.html">Back to Database Viewer</a>
+      </div>
+    </header>
+
+    <main class="guide-root">
+      <article class="guide">
+        <h1>Using @mlight-cad/dwg-converter</h1>
+        <p>
+          This example shows how to register the private DWG converter with
+          RealDWG-Web's <code>AcDbDatabaseConverterManager</code>, then browse
+          the resulting <code>AcDbDatabase</code>.
+        </p>
+
+        <h2>1. Install</h2>
+        <pre class="code-block"><code>pnpm add @mlightcad/data-model
+pnpm add @mlight-cad/dwg-converter</code></pre>
+        <p>
+          Authenticate only the <code>@mlight-cad</code> scope (see
+          <code>.npmrc.example</code>). Do not remap the whole
+          <code>@mlightcad</code> scope to GitHub Packages.
+        </p>
+
+        <h2>2. Deploy worker assets</h2>
+        <p>
+          Copy from <code>@mlight-cad/dwg-converter/dist/</code> into a public
+          folder (this app uses <code>./assets/</code>):
+        </p>
+        <ul>
+          <li><code>dwg-parser-worker.js</code></li>
+          <li><code>dwg-codepage-*.bin</code> (CJK fallback tables)</li>
+        </ul>
+
+        <h2>3. Register and read</h2>
+        <pre id="guideSnippet" class="code-block"></pre>
+
+        <h2>4. License</h2>
+        <p>
+          Omit <code>licenseKey</code> for a 30-day trial. For production, set
+          <code>VITE_DWG_LICENSE_KEY</code> in <code>.env</code>.
+        </p>
+
+        <h2>5. Vite tips</h2>
+        <ul>
+          <li>
+            Always set
+            <code>acdbHostApplicationServices().workingDatabase</code> before
+            <code>database.read()</code>.
+          </li>
+          <li>
+            DXF is registered by default via
+            <code>AcDbNativeDxfConverter</code>.
+          </li>
+          <li>
+            Copy <code>dwg-parser-worker.js</code> and
+            <code>dwg-codepage-*.bin</code> to a public assets folder (this
+            example uses <code>vite-plugin-static-copy</code>).
+          </li>
+        </ul>
+      </article>
+    </main>
+
+    <script type="module" src="/src/guide.ts"></script>
+  </body>
+</html>

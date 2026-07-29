@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RealDWG-Web Example — Database Viewer</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div id="app" class="app">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-name">RealDWG-Web</span>
+          <span class="brand-sub">Database Viewer</span>
+        </div>
+        <div class="topbar-actions">
+          <input
+            id="fileInput"
+            type="file"
+            accept=".dwg,.dxf,.DWG,.DXF"
+            hidden
+          />
+          <button id="openButton" type="button" class="btn primary">
+            Open DWG / DXF
+          </button>
+          <button id="exportButton" type="button" class="btn" disabled>
+            Export DXF
+          </button>
+          <button id="guideButton" type="button" class="btn">
+            Integration Guide
+          </button>
+        </div>
+        <div id="status" class="status" role="status"></div>
+      </header>
+
+      <main id="viewerRoot" class="viewer-root"></main>
+    </div>
+
+    <div
+      id="loadingOverlay"
+      class="loading-overlay"
+      hidden
+      role="alertdialog"
+      aria-modal="true"
+      aria-labelledby="loadingText"
+    >
+      <div class="loading-card">
+        <div class="loading-spinner" aria-hidden="true"></div>
+        <div id="loadingText" class="loading-text">Opening drawing…</div>
+        <div class="loading-sub">Parsing DWG / DXF in a web worker</div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

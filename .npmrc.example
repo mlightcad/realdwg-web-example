@@ -1,0 +1,5 @@
+# Copy to .npmrc and set a GitHub token with read:packages.
+# Do NOT point the whole @mlightcad scope at GitHub Packages.
+registry=https://registry.npmjs.org/
+@mlight-cad:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
