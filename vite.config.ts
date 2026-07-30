@@ -21,6 +21,11 @@ export default defineConfig({
           dest: 'assets'
         },
         {
+          // Bundled app chunks resolve this as a sibling of import.meta.url.
+          src: './node_modules/@mlight-cad/dwg-converter/dist/dwg-parser-main.js',
+          dest: 'assets'
+        },
+        {
           src: './node_modules/@mlight-cad/dwg-converter/dist/dwg-codepage-*.bin',
           dest: 'assets'
         }
