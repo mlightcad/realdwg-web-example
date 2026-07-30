@@ -188,7 +188,7 @@ packages:
     engines: {node: '>=8'}
 
   '@mlight-cad/dwg-converter@1.12.1':
-    resolution: {integrity: sha512-1r4FrwNmwsvfCz/p41NRRvscEPubC5Kg98SIIOhU1FBjSGZaL+pvRh1tpuMQWetqgETnDKZeQLU26sG4xDkdZg==, tarball: https://npm.pkg.github.com/download/@mlight-cad/dwg-converter/1.12.1/99afc1b59ae7ee5e911a9b4a468f763f257bf215}
+    resolution: {integrity: sha512-Hb4ATJSFahGL9YcDkv7FiyJygBhJKnnbOMORmUBvyyuX3gtxaR/fv/ZywP2dDh4mLWWvilERER9o849MPTz7GA==, tarball: https://npm.pkg.github.com/download/@mlight-cad/dwg-converter/1.12.1/35ef31dff81668a82d49e461146ecf5ebe2acb97}
     engines: {pnpm: '>=10'}
     peerDependencies:
       '@mlightcad/data-model': ^1.12.1
@@ -442,8 +442,8 @@ packages:
     resolution: {integrity: sha512-RvwwcruNjI1ncT5xRakeyS9Lf8lcItv34KD+aif+VH9kduAyfYBipGh12274xtenIPZ119/R9BdTBa8gAwSh0A==}
     engines: {node: '>=12'}
 
-  postcss@8.5.24:
-    resolution: {integrity: sha512-8RyVklq0owXUTa4xlpzu4l9AaVKIdQvAcOHZWaMh98HgySsUtxRVf/chRe3dsSLqb6i40BzGRzEUddRaI+9TSw==}
+  postcss@8.5.25:
+    resolution: {integrity: sha512-DTPx3RWSSnWyzLxQnlH0rJP+EW5ekl16ZU4/psbIhA0e53kJfdgaN5vKM+xP7yJtXVu+nfdVFmlgFDEKAe4Pyw==}
     engines: {node: ^10 || ^12 || >=14}
 
   readdirp@3.6.0:
@@ -806,7 +806,7 @@ snapshots:
 
   picomatch@4.0.5: {}
 
-  postcss@8.5.24:
+  postcss@8.5.25:
     dependencies:
       nanoid: 3.3.16
       picocolors: 1.1.1
@@ -879,7 +879,7 @@ snapshots:
       esbuild: 0.25.12
       fdir: 6.5.0(picomatch@4.0.5)
       picomatch: 4.0.5
-      postcss: 8.5.24
+      postcss: 8.5.25
       rollup: 4.62.3
       tinyglobby: 0.2.17
     optionalDependencies:

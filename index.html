@@ -20,6 +20,13 @@
             accept=".dwg,.dxf,.DWG,.DXF"
             hidden
           />
+          <label class="parse-mode" title="DWG parse threading (for testing)">
+            <span class="parse-mode-label">DWG parse</span>
+            <select id="parseModeSelect" class="parse-mode-select">
+              <option value="worker" selected>Web Worker</option>
+              <option value="main">Main Thread</option>
+            </select>
+          </label>
           <button id="openButton" type="button" class="btn primary">
             Open DWG / DXF
           </button>
@@ -47,9 +54,13 @@
       <div class="loading-card">
         <div class="loading-spinner" aria-hidden="true"></div>
         <div id="loadingText" class="loading-text">Opening drawing…</div>
-        <div class="loading-sub">Parsing DWG / DXF in a web worker</div>
+        <div id="loadingSub" class="loading-sub">
+          Parsing DWG / DXF in a web worker
+        </div>
       </div>
     </div>
+
+    <div id="toastRoot" class="toast-root" aria-live="polite"></div>
 
     <script type="module" src="/src/main.ts"></script>
   </body>

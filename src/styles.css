@@ -73,6 +73,41 @@ body {
   gap: 8px;
 }
 
+.parse-mode {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  user-select: none;
+}
+
+.parse-mode-label {
+  white-space: nowrap;
+}
+
+.parse-mode-select {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--surface)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235c6570' d='M3 4.5 6 8l3-3.5'/%3E%3C/svg%3E")
+    no-repeat right 8px center;
+  color: var(--text);
+  border-radius: 6px;
+  padding: 6px 28px 6px 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.parse-mode-select:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.parse-mode-select:hover:not(:disabled) {
+  background-color: var(--tree-hover);
+}
+
 .btn {
   appearance: none;
   border: 1px solid var(--border);
@@ -389,6 +424,74 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+.toast-root {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  max-width: min(420px, calc(100vw - 32px));
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 12px 12px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.toast-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast-error {
+  border-color: #f0b4ae;
+  background: #fff5f4;
+  color: var(--danger);
+}
+
+.toast-ok {
+  border-color: #a6d4b8;
+  background: #f3faf6;
+  color: var(--ok);
+}
+
+.toast-message {
+  flex: 1;
+  font-size: 13px;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.toast-close {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: inherit;
+  opacity: 0.7;
+  font-size: 18px;
+  line-height: 1;
+  padding: 0 2px;
+  cursor: pointer;
+}
+
+.toast-close:hover {
+  opacity: 1;
 }
 
 .center-toolbar {

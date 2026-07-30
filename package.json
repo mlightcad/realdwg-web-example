@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "use-local-deps": "node tools/use-local-deps.mjs"
   },
   "dependencies": {
     "@mlight-cad/dwg-converter": "^1.12.1",

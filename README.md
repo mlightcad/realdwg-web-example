@@ -27,9 +27,18 @@ This is **not** a canvas CAD viewer. For WebGL viewing see [`cad-simple-viewer-e
 
 - Node.js ≥ 20
 - pnpm ≥ 10
-- A GitHub token with `read:packages` and access to `@mlight-cad/dwg-converter`
+- Membership in the [mlight-cad](https://github.com/mlight-cad) GitHub organization (required to pull `@mlight-cad/dwg-converter`)
+- A GitHub token with `read:packages` for that account
 
 ## Getting started
+
+`@mlight-cad/dwg-converter` is a **private** package on GitHub Packages. Before `npm install` / `pnpm install` can succeed, you must:
+
+1. Email [mlight.lee@outlook.com](mailto:mlight.lee@outlook.com) to request access and join the **mlight-cad** GitHub organization. Include your **GitHub username**. Details and the email template are in [`PROPRIETARY-PARSER.md` → “Trial License”](https://github.com/mlightcad/cad-viewer/blob/main/PROPRIETARY-PARSER.md#trial-license).
+2. Accept the organization invitation in GitHub.
+3. Create a personal access token with `read:packages` and set it as `GITHUB_TOKEN`.
+
+Without organization membership and a valid token, `npm install` or `pnpm install` will fail when resolving `@mlight-cad/dwg-converter`.
 
 `.npmrc` is already configured so that:
 
@@ -97,7 +106,7 @@ See the in-app **Integration Guide** button (opens `guide.html` in a new tab) fo
 
 | Symptom | Likely cause |
 |---------|----------------|
-| 401/403 installing `@mlight-cad/dwg-converter` | Missing/invalid `GITHUB_TOKEN` or no package access |
+| 401/403 installing `@mlight-cad/dwg-converter` | Not a member of **mlight-cad**, or missing/invalid `GITHUB_TOKEN` |
 | Worker failed to load / 404 | `dwg-parser-worker.js` not copied to `assets/` |
 | License / trial error | Trial expired or invalid `VITE_DWG_LICENSE_KEY` |
 
