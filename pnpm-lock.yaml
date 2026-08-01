@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@mlight-cad/dwg-converter':
-        specifier: ^1.12.1
-        version: 1.12.1(@mlightcad/data-model@1.12.1)
+        specifier: ^1.12.2
+        version: 1.12.2(@mlightcad/data-model@1.12.2)
       '@mlightcad/data-model':
-        specifier: ^1.12.1
-        version: 1.12.1
+        specifier: ^1.12.2
+        version: 1.12.2
     devDependencies:
       typescript:
         specifier: ^5.5.2
@@ -187,28 +187,28 @@ packages:
     resolution: {integrity: sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA==}
     engines: {node: '>=8'}
 
-  '@mlight-cad/dwg-converter@1.12.1':
-    resolution: {integrity: sha512-Hb4ATJSFahGL9YcDkv7FiyJygBhJKnnbOMORmUBvyyuX3gtxaR/fv/ZywP2dDh4mLWWvilERER9o849MPTz7GA==, tarball: https://npm.pkg.github.com/download/@mlight-cad/dwg-converter/1.12.1/35ef31dff81668a82d49e461146ecf5ebe2acb97}
+  '@mlight-cad/dwg-converter@1.12.2':
+    resolution: {integrity: sha512-RqnRybKzMAtTHwDbnHx4LLawrvybpWm24TakB5X0jjdrYCPehGF3QOm50qsU8rG+uADqVRBaEf1CDBgLIHAcUg==, tarball: https://npm.pkg.github.com/download/@mlight-cad/dwg-converter/1.12.2/4303ef57f6d9255d3428fe56a010fc023308e6fc}
     engines: {pnpm: '>=10'}
     peerDependencies:
-      '@mlightcad/data-model': ^1.12.1
+      '@mlightcad/data-model': ^1.12.2
 
-  '@mlightcad/common@1.12.1':
-    resolution: {integrity: sha512-Ree6O/WJWm3V+o3HqAg06SqrZMv3e1WDiI8BlMPPz1AODTDsAryDTOKbzBsLaciw2UU8oQyR3RKpRr/OFiESOw==}
+  '@mlightcad/common@1.12.2':
+    resolution: {integrity: sha512-VMlelC8DR+oUVmo4ONY6BnX4Lmrp251ZYLVirKsfkf0c12A4AGD73X5pr75SmrhrPZrjJn9maPN41HVUV3EMPg==}
 
-  '@mlightcad/data-model@1.12.1':
-    resolution: {integrity: sha512-Q+1B8XXWDhQ5HuWCiuREJVfS1lKme3b2eoi6h733QbUG1n2gROyllYzBH8iZmtRgsth6shcmHOceZhHSTHHsfg==}
+  '@mlightcad/data-model@1.12.2':
+    resolution: {integrity: sha512-9ifh+6XONc8m4iV6ZQlsBli79htcta2Qfyvga3RCvSQt3ZXUeKaSzbjVhif0LAL9kNpc8B8Gh9maOhe6KPhoyQ==}
 
-  '@mlightcad/geometry-engine@3.12.1':
-    resolution: {integrity: sha512-k5FoZbpRWCXs6UQhdU8+di1jbEI64IKGSq1xQmTeQkrSEhcrkS8Ha0AHXX6evfFhNCfpEo9xx5WDtEGyq6+v2Q==}
+  '@mlightcad/geometry-engine@3.12.2':
+    resolution: {integrity: sha512-/vMD40+GUmLtGpqWUNzRDo6Wp57/+G2mP6MiJME/tp8qkCrBsgyzw9Rh/goXU/ndaOmbk8eIagGiwcaRFpX8oA==}
     peerDependencies:
-      '@mlightcad/common': 1.12.1
+      '@mlightcad/common': 1.12.2
 
-  '@mlightcad/graphic-interface@3.12.1':
-    resolution: {integrity: sha512-A19FkA6/6/9TxsPI7CoeO38Mze9xo76Op4FYlcM1B+Ob35TCITX3uowjtwsYUa+fqNIQhG+9Spf3egrRTHanjQ==}
+  '@mlightcad/graphic-interface@3.12.2':
+    resolution: {integrity: sha512-u2z3qH5KzRQ2DzfQhgOh40jQT3vYJITJ69WzL299zTFE6BP8Hlqx2X+O9xUeUkOsJsw6pf1HZc6qGt/1AJPUcA==}
     peerDependencies:
-      '@mlightcad/common': 1.12.1
-      '@mlightcad/geometry-engine': 3.12.1
+      '@mlightcad/common': 1.12.2
+      '@mlightcad/geometry-engine': 3.12.2
 
   '@rollup/rollup-android-arm-eabi@4.62.3':
     resolution: {integrity: sha512-c0wdcekXtQvvn5Tsrk/+op/gUArrbWaFduBnTLP2l1cKLSQs4diMWjJw3m6A0DdzT8dAAX95KpkJ3qynCePbmw==}
@@ -394,10 +394,6 @@ packages:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
     engines: {node: '>= 6'}
 
-  iconv-lite@0.7.3:
-    resolution: {integrity: sha512-IKXpvIzjnC9XTAUbVBcMfGS0EPaIXtW6v+zr+RRp+hqULEpo0owZax6wyRwPOJbWbzjYspQwusTsfVr0ifh4uQ==}
-    engines: {node: '>=0.10.0'}
-
   is-binary-path@2.1.0:
     resolution: {integrity: sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==}
     engines: {node: '>=8'}
@@ -454,9 +450,6 @@ packages:
     resolution: {integrity: sha512-Gu0c0iH9FzgX1L1t7ByIbbS3Vmdz+6KHm/EsqmmC71gUQ82yvZRkTK6XzrFObSka91WUVdynqp6nsfilzr5k6Q==}
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
     hasBin: true
-
-  safer-buffer@2.1.2:
-    resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
@@ -607,30 +600,29 @@ snapshots:
 
   '@lukeed/csprng@1.1.0': {}
 
-  '@mlight-cad/dwg-converter@1.12.1(@mlightcad/data-model@1.12.1)':
+  '@mlight-cad/dwg-converter@1.12.2(@mlightcad/data-model@1.12.2)':
     dependencies:
-      '@mlightcad/data-model': 1.12.1
+      '@mlightcad/data-model': 1.12.2
 
-  '@mlightcad/common@1.12.1':
+  '@mlightcad/common@1.12.2':
     dependencies:
       loglevel: 1.9.2
 
-  '@mlightcad/data-model@1.12.1':
+  '@mlightcad/data-model@1.12.2':
     dependencies:
-      '@mlightcad/common': 1.12.1
-      '@mlightcad/geometry-engine': 3.12.1(@mlightcad/common@1.12.1)
-      '@mlightcad/graphic-interface': 3.12.1(@mlightcad/common@1.12.1)(@mlightcad/geometry-engine@3.12.1(@mlightcad/common@1.12.1))
-      iconv-lite: 0.7.3
+      '@mlightcad/common': 1.12.2
+      '@mlightcad/geometry-engine': 3.12.2(@mlightcad/common@1.12.2)
+      '@mlightcad/graphic-interface': 3.12.2(@mlightcad/common@1.12.2)(@mlightcad/geometry-engine@3.12.2(@mlightcad/common@1.12.2))
       uid: 2.0.2
 
-  '@mlightcad/geometry-engine@3.12.1(@mlightcad/common@1.12.1)':
+  '@mlightcad/geometry-engine@3.12.2(@mlightcad/common@1.12.2)':
     dependencies:
-      '@mlightcad/common': 1.12.1
+      '@mlightcad/common': 1.12.2
 
-  '@mlightcad/graphic-interface@3.12.1(@mlightcad/common@1.12.1)(@mlightcad/geometry-engine@3.12.1(@mlightcad/common@1.12.1))':
+  '@mlightcad/graphic-interface@3.12.2(@mlightcad/common@1.12.2)(@mlightcad/geometry-engine@3.12.2(@mlightcad/common@1.12.2))':
     dependencies:
-      '@mlightcad/common': 1.12.1
-      '@mlightcad/geometry-engine': 3.12.1(@mlightcad/common@1.12.1)
+      '@mlightcad/common': 1.12.2
+      '@mlightcad/geometry-engine': 3.12.2(@mlightcad/common@1.12.2)
 
   '@rollup/rollup-android-arm-eabi@4.62.3':
     optional: true
@@ -776,10 +768,6 @@ snapshots:
     dependencies:
       is-glob: 4.0.3
 
-  iconv-lite@0.7.3:
-    dependencies:
-      safer-buffer: 2.1.2
-
   is-binary-path@2.1.0:
     dependencies:
       binary-extensions: 2.3.0
@@ -846,8 +834,6 @@ snapshots:
       '@rollup/rollup-win32-x64-gnu': 4.62.3
       '@rollup/rollup-win32-x64-msvc': 4.62.3
       fsevents: 2.3.3
-
-  safer-buffer@2.1.2: {}
 
   source-map-js@1.2.1: {}
 
