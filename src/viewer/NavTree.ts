@@ -63,7 +63,8 @@ export class NavTree {
     const spaces: HTMLButtonElement[] = []
     const namedBlocks: HTMLButtonElement[] = []
     for (const block of database.tables.blockTable.newIterator()) {
-      const count = [...block.newIterator()].length
+      // Badge only — entity rows are built lazily in CenterPane on click.
+      const count = block.newIterator().count
       const btn = this.item(
         block.name,
         { kind: 'block', blockName: block.name },

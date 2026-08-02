@@ -35,13 +35,14 @@ pnpm add @mlight-cad/dwg-converter</code></pre>
           <code>@mlightcad</code> scope to GitHub Packages.
         </p>
 
-        <h2>2. Deploy worker assets</h2>
+        <h2>2. Deploy parser assets</h2>
         <p>
           Copy from <code>@mlight-cad/dwg-converter/dist/</code> into a public
           folder (this app uses <code>./assets/</code>):
         </p>
         <ul>
-          <li><code>dwg-parser-worker.js</code></li>
+          <li><code>dwg-parser-worker.js</code> (web worker mode)</li>
+          <li><code>dwg-parser-main.js</code> (main-thread mode)</li>
           <li><code>dwg-codepage-*.bin</code> (CJK fallback tables)</li>
         </ul>
 
@@ -66,9 +67,16 @@ pnpm add @mlight-cad/dwg-converter</code></pre>
             <code>AcDbNativeDxfConverter</code>.
           </li>
           <li>
-            Copy <code>dwg-parser-worker.js</code> and
+            Copy <code>dwg-parser-worker.js</code>,
+            <code>dwg-parser-main.js</code> (main-thread mode), and
             <code>dwg-codepage-*.bin</code> to a public assets folder (this
             example uses <code>vite-plugin-static-copy</code>).
+          </li>
+          <li>
+            Exclude <code>@mlight-cad/dwg-converter</code> from
+            <code>optimizeDeps</code> so main-thread
+            <code>dwg-parser-main.js</code> loads as a sibling of the converter
+            in <code>pnpm dev</code>.
           </li>
         </ul>
       </article>

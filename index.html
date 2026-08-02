@@ -23,8 +23,8 @@
           <label class="parse-mode" title="DWG parse threading (for testing)">
             <span class="parse-mode-label">DWG parse</span>
             <select id="parseModeSelect" class="parse-mode-select">
-              <option value="worker" selected>Web Worker</option>
-              <option value="main">Main Thread</option>
+              <option value="main" selected>Main Thread</option>
+              <option value="worker">Web Worker</option>
             </select>
           </label>
           <button id="openButton" type="button" class="btn primary">
@@ -55,7 +55,7 @@
         <div class="loading-spinner" aria-hidden="true"></div>
         <div id="loadingText" class="loading-text">Opening drawing…</div>
         <div id="loadingSub" class="loading-sub">
-          Parsing DWG / DXF in a web worker
+          Reading file into memory…
         </div>
       </div>
     </div>

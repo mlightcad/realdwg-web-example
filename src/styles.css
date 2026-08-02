@@ -258,13 +258,14 @@ body {
 
 .stats-grid {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 4px 10px;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 4px 12px;
 }
 
 .stats-grid dt {
   margin: 0;
   color: var(--muted);
+  white-space: nowrap;
 }
 
 .stats-grid dd {
@@ -272,6 +273,9 @@ body {
   text-align: right;
   font-family: var(--mono);
   font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .collapsible-header {

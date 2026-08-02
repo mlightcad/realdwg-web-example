@@ -37,7 +37,8 @@ export const collectStats = (
   let blockDefinitions = 0
 
   for (const block of tables.blockTable.newIterator()) {
-    const count = [...block.newIterator()].length
+    // Use iterator.count (Map size) — do not materialize entity arrays here.
+    const count = block.newIterator().count
     entityTotal += count
     if (block.isModelSapce) {
       modelSpaceEntities = count

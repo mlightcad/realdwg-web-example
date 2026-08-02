@@ -37,7 +37,7 @@ export const getFileType = (fileName: string): AcDbFileType => {
 }
 
 export interface OpenDrawingOptions {
-  /** DWG parse threading. Defaults to `'worker'`. Ignored for DXF. */
+  /** DWG parse threading. Defaults to `'main'`. Ignored for DXF. */
   parseMode?: DwgParseMode
 }
 
@@ -53,7 +53,7 @@ export const openDrawing = async (
   fileName: string,
   options: OpenDrawingOptions = {}
 ): Promise<OpenDrawingResult> => {
-  const parseMode = options.parseMode ?? 'worker'
+  const parseMode = options.parseMode ?? 'main'
   registerConverters(parseMode)
 
   const fileType = getFileType(fileName)

@@ -35,18 +35,40 @@ const setStatus = (message: string, kind: 'ok' | 'error' | '' = '') => {
   if (kind) statusEl.classList.add(kind)
 }
 
-const setLoading = (busy: boolean, message?: string, parseMode?: DwgParseMode) => {
+type LoadPhase = 'read' | 'parse' | 'ui'
+
+const loadingSubFor = (phase: LoadPhase, parseMode: DwgParseMode): string => {
+  switch (phase) {
+    case 'read':
+      return 'Reading file into memory…'
+    case 'parse':
+      return parseMode === 'main'
+        ? 'Parsing DWG/DXF into the data model (main thread)…'
+        : 'Parsing DWG into the data model (web worker; DXF is always main-thread)…'
+    case 'ui':
+      return 'Building stats and navigation…'
+  }
+}
+
+/** Let the browser paint updated loading text before heavy sync work. */
+const yieldToPaint = () =>
+  new Promise<void>(resolve => {
+    requestAnimationFrame(() => requestAnimationFrame(() => resolve()))
+  })
+
+const setLoading = (
+  busy: boolean,
+  options?: { message?: string; phase?: LoadPhase; parseMode?: DwgParseMode }
+) => {
   openButton.disabled = busy
   fileInput.disabled = busy
   parseModeSelect.disabled = busy
   if (busy) {
     exportButton.disabled = true
-    loadingText.textContent = message ?? 'Opening drawing…'
-    const mode = parseMode ?? getParseMode()
-    loadingSub.textContent =
-      mode === 'main'
-        ? 'Parsing DWG on the main thread (DXF is always main-thread)'
-        : 'Parsing DWG / DXF in a web worker'
+    loadingText.textContent = options?.message ?? 'Opening drawing…'
+    const mode = options?.parseMode ?? getParseMode()
+    const phase = options?.phase ?? 'parse'
+    loadingSub.textContent = loadingSubFor(phase, mode)
     loadingOverlay.hidden = false
     document.body.style.overflow = 'hidden'
   } else {
@@ -71,14 +93,28 @@ fileInput.addEventListener('change', async () => {
   lastDatabase = null
   exportButton.disabled = true
   viewer.clear()
-  setLoading(true, `Opening ${file.name}…`, parseMode)
+  setLoading(true, {
+    message: `Opening ${file.name}…`,
+    phase: 'read',
+    parseMode
+  })
   setStatus(`Opening ${file.name} (${parseModeLabel(parseMode)})…`)
 
   try {
     const buffer = await file.arrayBuffer()
-    setLoading(true, `Parsing ${file.name}…`, parseMode)
+    setLoading(true, {
+      message: `Parsing ${file.name}…`,
+      phase: 'parse',
+      parseMode
+    })
     const result = await openDrawing(buffer, file.name, { parseMode })
     lastDatabase = result.database
+    setLoading(true, {
+      message: `Preparing ${file.name}…`,
+      phase: 'ui',
+      parseMode: result.parseMode
+    })
+    await yieldToPaint()
     viewer.load({
       database: result.database,
       fileName: file.name,

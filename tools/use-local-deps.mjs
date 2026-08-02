@@ -47,7 +47,8 @@ const updatePackageJson = () => {
 /**
  * Apply vite.config.ts tweaks needed when linking sibling realdwg-web packages:
  * - server.fs.allow for @fs loads of dwg-parser-main.js
- * - static copy of dwg-parser-main.js for production builds
+ * - static copy of dwg-parser-main.js for production builds (idempotent if
+ *   already present in the base vite.config)
  */
 const updateViteConfig = () => {
   let source = readFileSync(viteConfigPath, 'utf8')
