@@ -19,6 +19,8 @@ export class CenterPane {
   private stats: DrawingStats | null = null
   private selection: NavSelection = { kind: 'overview' }
   private entities: AcDbEntity[] = []
+  /** Block whose entities are currently cached in `entities`. */
+  private entitiesBlockName: string | null = null
   private selectedKey: string | null = null
   private onSelect: (selection: CenterSelection) => void
 
@@ -63,6 +65,8 @@ export class CenterPane {
     this.database = database
     this.stats = stats
     this.selectedKey = null
+    this.entities = []
+    this.entitiesBlockName = null
     this.selection = { kind: 'overview' }
     this.showNav(this.selection)
   }
@@ -70,6 +74,11 @@ export class CenterPane {
   showNav(selection: NavSelection) {
     this.selection = selection
     this.selectedKey = null
+    if (selection.kind !== 'block') {
+      // Drop materialized entity list when leaving a block view.
+      this.entities = []
+      this.entitiesBlockName = null
+    }
     this.onSelect({ kind: 'none' })
     this.refreshList()
   }
@@ -236,7 +245,7 @@ export class CenterPane {
           <td>${escapeHtml(flags || '—')}</td>`
       } else if (table === 'block') {
         const block = record as import('@mlightcad/data-model').AcDbBlockTableRecord
-        const count = [...block.newIterator()].length
+        const count = block.newIterator().count
         tr.innerHTML = `
           <td>${escapeHtml(block.name)}</td>
           <td>${count}</td>
@@ -264,7 +273,11 @@ export class CenterPane {
       return
     }
 
-    this.entities = [...block.newIterator()]
+    // Materialize only for the selected block, and only when the selection changes.
+    if (this.entitiesBlockName !== blockName) {
+      this.entities = block.newIterator().toArray()
+      this.entitiesBlockName = blockName
+    }
     this.toolbar.hidden = false
     this.typeFilter.hidden = false
 
