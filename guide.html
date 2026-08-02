@@ -73,8 +73,7 @@ pnpm add @mlight-cad/dwg-converter</code></pre>
             example uses <code>vite-plugin-static-copy</code>).
           </li>
           <li>
-            Exclude <code>@mlight-cad/dwg-converter</code> (and ideally
-            <code>@mlightcad/data-model</code>) from
+            Exclude <code>@mlight-cad/dwg-converter</code> from
             <code>optimizeDeps</code> so main-thread
             <code>dwg-parser-main.js</code> loads as a sibling of the converter
             in <code>pnpm dev</code>.
