@@ -9,10 +9,10 @@ importers:
   .:
     dependencies:
       '@mlight-cad/dwg-converter':
-        specifier: ^1.12.7
+        specifier: ^1.14.7
         version: 1.14.7(@mlightcad/data-model@1.14.8)
       '@mlightcad/data-model':
-        specifier: ^1.12.7
+        specifier: ^1.14.8
         version: 1.14.8
     devDependencies:
       typescript:
