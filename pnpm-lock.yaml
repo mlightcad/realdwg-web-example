@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@mlight-cad/dwg-converter':
-        specifier: ^1.14.7
-        version: 1.14.7(@mlightcad/data-model@1.14.8)
+        specifier: ^1.14.8
+        version: 1.14.8(@mlightcad/data-model@1.14.8)
       '@mlightcad/data-model':
         specifier: ^1.14.8
         version: 1.14.8
@@ -187,11 +187,11 @@ packages:
     resolution: {integrity: sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA==}
     engines: {node: '>=8'}
 
-  '@mlight-cad/dwg-converter@1.14.7':
-    resolution: {integrity: sha512-vQXh36KA5cDBsQmXkJ0aiaqi9L5PAgnce9sBvYjFgJBrVsaFzvskT0Lg4XLhimPMiEYZmT06zfpeMG6QDlSCUQ==, tarball: https://npm.pkg.github.com/download/@mlight-cad/dwg-converter/1.14.7/3a1bc2bd62e5fad971c8a03e6cb5513d1037566c}
+  '@mlight-cad/dwg-converter@1.14.8':
+    resolution: {integrity: sha512-TQCjAttHZsX3Vwajwt51vJfF/1LTuxJAqGsw71+6U4aCTtF0303r5ZBqVTvLMn5/123s8n0ZoyeQbVfeyMHTLw==, tarball: https://npm.pkg.github.com/download/@mlight-cad/dwg-converter/1.14.8/c13d434deaf8d5a5d025fabfaa1e64659a9858a7}
     engines: {pnpm: '>=10'}
     peerDependencies:
-      '@mlightcad/data-model': 1.14.7
+      '@mlightcad/data-model': 1.14.8
 
   '@mlightcad/common@1.14.8':
     resolution: {integrity: sha512-sQb9qiO8Tnhwj9u20NHcGdYgbDTmmVvYVvxtdo5k1GczdwfHQvQEm1rEHmoxm7/rxJAV+FJ3m5MKpu56qE76Hw==}
@@ -603,7 +603,7 @@ snapshots:
 
   '@lukeed/csprng@1.1.0': {}
 
-  '@mlight-cad/dwg-converter@1.14.7(@mlightcad/data-model@1.14.8)':
+  '@mlight-cad/dwg-converter@1.14.8(@mlightcad/data-model@1.14.8)':
     dependencies:
       '@mlightcad/data-model': 1.14.8
 
