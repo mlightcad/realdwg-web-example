@@ -188,7 +188,7 @@ packages:
     engines: {node: '>=8'}
 
   '@mlight-cad/dwg-converter@1.14.8':
-    resolution: {integrity: sha512-TQCjAttHZsX3Vwajwt51vJfF/1LTuxJAqGsw71+6U4aCTtF0303r5ZBqVTvLMn5/123s8n0ZoyeQbVfeyMHTLw==, tarball: https://npm.pkg.github.com/download/@mlight-cad/dwg-converter/1.14.8/c13d434deaf8d5a5d025fabfaa1e64659a9858a7}
+    resolution: {integrity: sha512-hG8ywZpv0Pk1knnktnqncn3F09UMq/2hL81RCTKcSifB/EBKJIlpWdc9wphXrS8HNdvlvCF0/4F5UYX5aslgdw==, tarball: https://npm.pkg.github.com/download/@mlight-cad/dwg-converter/1.14.8/6f88422aade6ecb16e6da8b6d99e836ebda8ae0e}
     engines: {pnpm: '>=10'}
     peerDependencies:
       '@mlightcad/data-model': 1.14.8

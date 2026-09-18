@@ -2,11 +2,11 @@ import type {
   AcDbDatabase,
   AcDbEntity,
   AcDbEntityRuntimeProperty,
-  AcDbLayerTableRecord,
   AcDbBlockTableRecord,
+  AcDbLayerTableRecord,
   AcDbSymbolTableRecord
 } from '@mlightcad/data-model'
-import { colorToCss, formatColor, formatPropValue } from './format'
+import { colorToCss, formatPropValue, isColorValue } from './format'
 import type { CenterSelection, TableKind } from './types'
 
 export class PropertyPanel {
@@ -110,33 +110,58 @@ export class PropertyPanel {
     title.textContent = `${tableLabel(table)} · ${name}`
     this.body.appendChild(title)
 
-    const rows: Array<[string, string]> = [
-      ['Name', record.name],
-      ['Object ID', record.objectId]
+    const attrs = record.attrs.attributes as Record<string, unknown>
+    const preferredOrder = ['name', 'objectId', 'ownerId']
+    const keys = [
+      ...preferredOrder.filter(key => key in attrs),
+      ...Object.keys(attrs)
+        .filter(key => !preferredOrder.includes(key))
+        .sort((a, b) => a.localeCompare(b))
     ]
 
-    if (table === 'layer') {
-      const layer = record as AcDbLayerTableRecord
-      rows.push(
-        ['Color', formatColor(layer.color)],
-        ['Linetype', layer.linetype || '—'],
-        ['Off', String(layer.isOff)],
-        ['Frozen', String(layer.isFrozen)],
-        ['Locked', String(layer.isLocked)],
-        ['Plottable', String(layer.isPlottable)]
-      )
-    } else if (table === 'block') {
-      const block = record as AcDbBlockTableRecord
-      rows.push(
-        ['Entities', String([...block.newIterator()].length)],
-        ['Origin', `${block.origin.x}, ${block.origin.y}, ${block.origin.z}`],
-        ['Model space', String(block.isModelSapce)],
-        ['Paper space', String(block.isPaperSapce)]
+    for (const key of keys) {
+      const value = attrs[key]
+      if (key === 'gsView' && value && typeof value === 'object' && !Array.isArray(value)) {
+        const nested = value as Record<string, unknown>
+        for (const nestedKey of Object.keys(nested).sort((a, b) =>
+          a.localeCompare(b)
+        )) {
+          const nestedValue = nested[nestedKey]
+          this.body.appendChild(
+            this.simpleRow(
+              attrLabel(`gsView.${nestedKey}`),
+              formatPropValue(nestedValue),
+              isColorValue(nestedValue) ? nestedValue : undefined
+            )
+          )
+        }
+        continue
+      }
+
+      this.body.appendChild(
+        this.simpleRow(
+          attrLabel(key),
+          formatPropValue(value),
+          isColorValue(value) ? value : undefined
+        )
       )
     }
 
-    for (const [key, value] of rows) {
-      this.body.appendChild(this.simpleRow(key, value, table === 'layer' && key === 'Color' ? (record as AcDbLayerTableRecord).color : undefined))
+    if (table === 'layer') {
+      const layer = record as AcDbLayerTableRecord
+      this.body.appendChild(this.simpleRow('Frozen', String(layer.isFrozen)))
+      this.body.appendChild(this.simpleRow('Locked', String(layer.isLocked)))
+    } else if (table === 'block') {
+      const block = record as AcDbBlockTableRecord
+      this.body.appendChild(
+        this.simpleRow('Entities', String([...block.newIterator()].length))
+      )
+      this.body.appendChild(
+        this.simpleRow('Model space', String(block.isModelSapce))
+      )
+      this.body.appendChild(
+        this.simpleRow('Paper space', String(block.isPaperSapce))
+      )
     }
   }
 
@@ -220,6 +245,38 @@ export class PropertyPanel {
     row.appendChild(valueEl)
     return row
   }
+}
+
+const ATTR_LABELS: Record<string, string> = {
+  name: 'Name',
+  objectId: 'Object ID',
+  ownerId: 'Owner ID',
+  extensionDictionary: 'Extension dictionary',
+  isOff: 'Off',
+  isFrozen: 'Frozen',
+  isLocked: 'Locked',
+  isPlottable: 'Plottable',
+  isHidden: 'Hidden',
+  isInUse: 'In use',
+  lineWeight: 'Line weight',
+  materialId: 'Material ID',
+  layoutId: 'Layout ID',
+  previewIcon: 'Preview icon',
+  blockInsertUnits: 'Block insert units',
+  blockScaling: 'Block scaling',
+  standardFlags: 'Standard flags',
+  standardFlag: 'Standard flag'
+}
+
+const attrLabel = (key: string): string => {
+  if (ATTR_LABELS[key]) return ATTR_LABELS[key]
+  if (key.startsWith('gsView.')) {
+    return `View · ${attrLabel(key.slice('gsView.'.length))}`
+  }
+  const spaced = key
+    .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+    .replace(/_/g, ' ')
+  return spaced.charAt(0).toUpperCase() + spaced.slice(1)
 }
 
 const tableLabel = (table: TableKind): string => {
