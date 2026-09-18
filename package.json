@@ -13,8 +13,8 @@
     "use-local-deps": "node tools/use-local-deps.mjs"
   },
   "dependencies": {
-    "@mlight-cad/dwg-converter": "^1.12.3",
-    "@mlightcad/data-model": "^1.12.3"
+    "@mlight-cad/dwg-converter": "^1.14.8",
+    "@mlightcad/data-model": "^1.14.8"
   },
   "devDependencies": {
     "typescript": "^5.5.2",
