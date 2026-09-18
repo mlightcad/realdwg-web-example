@@ -42,6 +42,27 @@ export const isColorValue = (value: unknown): value is AcCmColor => {
   )
 }
 
+const formatPointLike = (value: {
+  x: number
+  y: number
+  z?: number
+}): string =>
+  value.z == null ? `${value.x}, ${value.y}` : `${value.x}, ${value.y}, ${value.z}`
+
+/** Keep primitives as JSON types; only rewrite special nested values. */
+const propJsonReplacer = (_key: string, nested: unknown): unknown => {
+  if (nested instanceof Uint8Array) {
+    return nested.length === 0 ? '—' : `${nested.length} bytes`
+  }
+  if (nested && typeof nested === 'object' && !Array.isArray(nested) && isPointLike(nested)) {
+    return formatPointLike(nested)
+  }
+  if (isColorValue(nested)) {
+    return formatColor(nested)
+  }
+  return nested
+}
+
 export const formatPropValue = (value: unknown): string => {
   if (value == null) return '—'
   if (typeof value === 'string') return value || '—'
@@ -50,36 +71,14 @@ export const formatPropValue = (value: unknown): string => {
     if (value instanceof Uint8Array) {
       return value.length === 0 ? '—' : `${value.length} bytes`
     }
-    if (Array.isArray(value)) {
-      try {
-        return JSON.stringify(value.map(item => formatPropValue(item)))
-      } catch {
-        return String(value)
-      }
-    }
     if (isColorValue(value)) {
       return formatColor(value)
     }
     if (isPointLike(value)) {
-      return value.z == null
-        ? `${value.x}, ${value.y}`
-        : `${value.x}, ${value.y}, ${value.z}`
+      return formatPointLike(value)
     }
     try {
-      return JSON.stringify(value, (_key, nested) => {
-        if (nested instanceof Uint8Array) {
-          return `${nested.length} bytes`
-        }
-        if (nested && typeof nested === 'object' && isPointLike(nested)) {
-          return nested.z == null
-            ? `${nested.x}, ${nested.y}`
-            : `${nested.x}, ${nested.y}, ${nested.z}`
-        }
-        if (isColorValue(nested)) {
-          return formatColor(nested)
-        }
-        return nested
-      })
+      return JSON.stringify(value, propJsonReplacer)
     } catch {
       return String(value)
     }
