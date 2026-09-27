@@ -1,5 +1,3 @@
-# PR checks: build only. Pages deploy runs on push to main/master.
-# Netlify Deploy Preview is disabled for PRs (see netlify.toml).
 name: CI
 
 on:
