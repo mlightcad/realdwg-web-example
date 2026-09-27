@@ -8,7 +8,7 @@ const packageJsonPath = join(root, 'package.json')
 const viteConfigPath = join(root, 'vite.config.ts')
 
 const LOCAL_DEPS = {
-  '@mlight-cad/dwg-converter': '../realdwg-web/packages/dwg-converter',
+  '@mlightcad/dwg-converter': '../realdwg-web/packages/dwg-converter',
   '@mlightcad/data-model': '../realdwg-web/packages/data-model',
 }
 
@@ -128,10 +128,10 @@ const localDataModel = resolve(__dirname, '../realdwg-web/packages/data-model')
   }
 
   const parserMainCopySrc =
-    './node_modules/@mlight-cad/dwg-converter/dist/dwg-parser-main.js'
+    './node_modules/@mlightcad/dwg-converter/dist/dwg-parser-main.js'
   if (!source.includes(parserMainCopySrc)) {
     const workerRe =
-      /(\{\s*src:\s*(['"])\.\/node_modules\/@mlight-cad\/dwg-converter\/dist\/\*-worker\.js\2,\s*dest:\s*(['"])assets\3\s*\},)/
+      /(\{\s*src:\s*(['"])\.\/node_modules\/@mlightcad\/dwg-converter\/dist\/\*-worker\.js\2,\s*dest:\s*(['"])assets\3\s*\},)/
     if (!workerRe.test(source)) {
       console.error(
         'vite.config.ts: expected worker static-copy target; skip dwg-parser-main.js'

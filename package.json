@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "module",
   "packageManager": "pnpm@10.33.4",
-  "description": "RealDWG-Web SDK demo and DWG/DXF database viewer using the private @mlight-cad/dwg-converter",
+  "description": "RealDWG-Web SDK demo and DWG/DXF database viewer using the private @mlightcad/dwg-converter",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -13,8 +13,8 @@
     "use-local-deps": "node tools/use-local-deps.mjs"
   },
   "dependencies": {
-    "@mlight-cad/dwg-converter": "^1.14.8",
-    "@mlightcad/data-model": "^1.14.8"
+    "@mlightcad/data-model": "^1.14.14",
+    "@mlightcad/dwg-converter": "^1.14.14"
   },
   "devDependencies": {
     "typescript": "^5.5.2",

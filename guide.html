@@ -19,7 +19,7 @@
 
     <main class="guide-root">
       <article class="guide">
-        <h1>Using @mlight-cad/dwg-converter</h1>
+        <h1>Using @mlightcad/dwg-converter</h1>
         <p>
           This example shows how to register the private DWG converter with
           RealDWG-Web's <code>AcDbDatabaseConverterManager</code>, then browse
@@ -28,16 +28,17 @@
 
         <h2>1. Install</h2>
         <pre class="code-block"><code>pnpm add @mlightcad/data-model
-pnpm add @mlight-cad/dwg-converter</code></pre>
+pnpm add @mlightcad/dwg-converter --registry https://npm.pkg.github.com</code></pre>
         <p>
-          Authenticate only the <code>@mlight-cad</code> scope (see
-          <code>.npmrc.example</code>). Do not remap the whole
+          Public <code>@mlightcad/*</code> packages install from npmjs. Install
+          private <code>@mlightcad/dwg-converter</code> with the GitHub Packages
+          registry flag (see <code>.npmrc.example</code>). Do not remap the whole
           <code>@mlightcad</code> scope to GitHub Packages.
         </p>
 
         <h2>2. Deploy parser assets</h2>
         <p>
-          Copy from <code>@mlight-cad/dwg-converter/dist/</code> into a public
+          Copy from <code>@mlightcad/dwg-converter/dist/</code> into a public
           folder (this app uses <code>./assets/</code>):
         </p>
         <ul>
@@ -73,7 +74,7 @@ pnpm add @mlight-cad/dwg-converter</code></pre>
             example uses <code>vite-plugin-static-copy</code>).
           </li>
           <li>
-            Exclude <code>@mlight-cad/dwg-converter</code> from
+            Exclude <code>@mlightcad/dwg-converter</code> from
             <code>optimizeDeps</code> so main-thread
             <code>dwg-parser-main.js</code> loads as a sibling of the converter
             in <code>pnpm dev</code>.

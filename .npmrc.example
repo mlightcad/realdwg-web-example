@@ -1,5 +1,7 @@
 # Copy to .npmrc and set a GitHub token with read:packages.
-# Do NOT point the whole @mlightcad scope at GitHub Packages.
+# Public @mlightcad/* packages (e.g. data-model) come from npmjs.
+# Install private @mlightcad/dwg-converter with:
+#   pnpm add @mlightcad/dwg-converter --registry https://npm.pkg.github.com
+# Do NOT set @mlightcad:registry to GitHub Packages — that breaks public packages on npmjs.
 registry=https://registry.npmjs.org/
-@mlight-cad:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}

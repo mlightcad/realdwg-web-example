@@ -1,6 +1,6 @@
 # RealDWG-Web Example
 
-Customer-facing demo for [@mlightcad/data-model](https://www.npmjs.com/package/@mlightcad/data-model) (npmjs) and the private DWG converter [`@mlight-cad/dwg-converter`](https://github.com/mlight-cad/dwg-converter) (GitHub Packages).
+Customer-facing demo for [@mlightcad/data-model](https://www.npmjs.com/package/@mlightcad/data-model) (npmjs) and the private DWG converter [`@mlightcad/dwg-converter`](https://github.com/mlightcad/dwg-converter) (GitHub Packages).
 
 It is both:
 
@@ -16,7 +16,7 @@ This is **not** a canvas CAD viewer. For WebGL viewing see [`cad-simple-viewer-e
 ## Features
 
 - Open local `.dwg` / `.dxf` files in the browser
-- DWG via private `@mlight-cad/dwg-converter` (web worker)
+- DWG via private `@mlightcad/dwg-converter` (web worker)
 - DXF via built-in MIT `AcDbNativeDxfConverter`
 - Left pane: thumbnail preview + database stats + navigation tree
 - Center: symbol table records or entity list (filter / type)
@@ -27,23 +27,29 @@ This is **not** a canvas CAD viewer. For WebGL viewing see [`cad-simple-viewer-e
 
 - Node.js ≥ 20
 - pnpm ≥ 10
-- Membership in the [mlight-cad](https://github.com/mlight-cad) GitHub organization (required to pull `@mlight-cad/dwg-converter`)
+- Membership in the [mlight-cad](https://github.com/mlight-cad) GitHub organization (required to pull `@mlightcad/dwg-converter`)
 - A GitHub token with `read:packages` for that account
 
 ## Getting started
 
-`@mlight-cad/dwg-converter` is a **private** package on GitHub Packages. Before `npm install` / `pnpm install` can succeed, you must:
+`@mlightcad/dwg-converter` is a **private** package on GitHub Packages. Before `npm install` / `pnpm install` can succeed, you must:
 
 1. Email [mlight.lee@outlook.com](mailto:mlight.lee@outlook.com) to request access and join the **mlight-cad** GitHub organization. Include your **GitHub username**. Details and the email template are in [`PROPRIETARY-PARSER.md` → “Trial License”](https://github.com/mlightcad/cad-viewer/blob/main/PROPRIETARY-PARSER.md#trial-license).
 2. Accept the organization invitation in GitHub.
 3. Create a personal access token with `read:packages` and set it as `GITHUB_TOKEN`.
 
-Without organization membership and a valid token, `npm install` or `pnpm install` will fail when resolving `@mlight-cad/dwg-converter`.
+Without organization membership and a valid token, installing `@mlightcad/dwg-converter` will fail.
 
 `.npmrc` is already configured so that:
 
-- `@mlightcad/*` (e.g. `data-model`) installs from **npmjs**
-- `@mlight-cad/*` (`dwg-converter`) installs from **GitHub Packages**
+- Public `@mlightcad/*` packages (e.g. `data-model`) install from **npmjs**
+- Private `@mlightcad/dwg-converter` is fetched from **GitHub Packages** (lockfile tarball URL + `GITHUB_TOKEN`)
+
+To add the private converter in a new project (do **not** remap the whole `@mlightcad` scope to GitHub Packages — that breaks public packages on npmjs):
+
+```bash
+pnpm add @mlightcad/dwg-converter --registry https://npm.pkg.github.com
+```
 
 ```bash
 # PowerShell
@@ -57,8 +63,6 @@ pnpm dev
 ```
 
 Open the printed URL, then **Open DWG / DXF**.
-
-Do **not** set `@mlightcad:registry` to GitHub Packages — that breaks public packages on npmjs.
 
 ## License key
 
@@ -83,7 +87,7 @@ Registration in code:
 
 ```ts
 import { AcDbDatabaseConverterManager, AcDbFileType } from '@mlightcad/data-model'
-import { AcDbDwgConverter } from '@mlight-cad/dwg-converter'
+import { AcDbDwgConverter } from '@mlightcad/dwg-converter'
 
 const converter = new AcDbDwgConverter({
   parserWorkerUrl: './assets/dwg-parser-worker.js',
@@ -106,10 +110,10 @@ See the in-app **Integration Guide** button (opens `guide.html` in a new tab) fo
 
 | Symptom | Likely cause |
 |---------|----------------|
-| 401/403 installing `@mlight-cad/dwg-converter` | Not a member of **mlight-cad**, or missing/invalid `GITHUB_TOKEN` |
+| 401/403 installing `@mlightcad/dwg-converter` | Not a member of **mlight-cad**, or missing/invalid `GITHUB_TOKEN` |
 | Worker failed to load / 404 | `dwg-parser-worker.js` not copied to `assets/` |
 | License / trial error | Trial expired or invalid `VITE_DWG_LICENSE_KEY` |
 
 ## License
 
-MIT for this example app. `@mlight-cad/dwg-converter` remains private / UNLICENSED and is distributed separately.
+MIT for this example app. `@mlightcad/dwg-converter` remains private / UNLICENSED and is distributed separately.

@@ -5,7 +5,7 @@ import {
   acdbHostApplicationServices,
   AcDbOpenDatabaseOptions
 } from '@mlightcad/data-model'
-import { AcDbDwgConverter } from '@mlight-cad/dwg-converter'
+import { AcDbDwgConverter } from '@mlightcad/dwg-converter'
 
 /** Where DWG parsing runs. DXF always uses the native main-thread converter. */
 export type DwgParseMode = 'worker' | 'main'
