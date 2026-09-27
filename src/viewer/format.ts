@@ -24,21 +24,61 @@ export const formatColor = (color: AcCmColor | undefined): string => {
   return color.toString() || '—'
 }
 
+const isPointLike = (
+  value: object
+): value is { x: number; y: number; z?: number } =>
+  'x' in value &&
+  'y' in value &&
+  typeof (value as { x: unknown }).x === 'number' &&
+  typeof (value as { y: unknown }).y === 'number'
+
+export const isColorValue = (value: unknown): value is AcCmColor => {
+  if (!value || typeof value !== 'object') return false
+  const maybeColor = value as AcCmColor
+  return (
+    typeof maybeColor.toString === 'function' &&
+    'red' in maybeColor &&
+    'colorIndex' in maybeColor
+  )
+}
+
+const formatPointLike = (value: {
+  x: number
+  y: number
+  z?: number
+}): string =>
+  value.z == null ? `${value.x}, ${value.y}` : `${value.x}, ${value.y}, ${value.z}`
+
+/** Keep primitives as JSON types; only rewrite special nested values. */
+const propJsonReplacer = (_key: string, nested: unknown): unknown => {
+  if (nested instanceof Uint8Array) {
+    return nested.length === 0 ? '—' : `${nested.length} bytes`
+  }
+  if (nested && typeof nested === 'object' && !Array.isArray(nested) && isPointLike(nested)) {
+    return formatPointLike(nested)
+  }
+  if (isColorValue(nested)) {
+    return formatColor(nested)
+  }
+  return nested
+}
+
 export const formatPropValue = (value: unknown): string => {
   if (value == null) return '—'
   if (typeof value === 'string') return value || '—'
   if (typeof value === 'number' || typeof value === 'boolean') return String(value)
   if (typeof value === 'object') {
-    const maybeColor = value as AcCmColor
-    if (
-      typeof maybeColor.toString === 'function' &&
-      'red' in maybeColor &&
-      'colorIndex' in maybeColor
-    ) {
-      return formatColor(maybeColor)
+    if (value instanceof Uint8Array) {
+      return value.length === 0 ? '—' : `${value.length} bytes`
+    }
+    if (isColorValue(value)) {
+      return formatColor(value)
+    }
+    if (isPointLike(value)) {
+      return formatPointLike(value)
     }
     try {
-      return JSON.stringify(value)
+      return JSON.stringify(value, propJsonReplacer)
     } catch {
       return String(value)
     }

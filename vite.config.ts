@@ -1,10 +1,27 @@
 import { resolve } from 'node:path'
-import { defineConfig } from 'vite'
+import { defineConfig, searchForWorkspaceRoot } from 'vite'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
+
+// Local `link:` deps resolve outside this repo; main-thread parse dynamically
+// imports sibling `dwg-parser-main.js` via @fs and needs that path allowed.
+const localDwgConverter = resolve(
+  __dirname,
+  '../realdwg-web/packages/dwg-converter'
+)
+const localDataModel = resolve(__dirname, '../realdwg-web/packages/data-model')
 
 export default defineConfig({
   // Relative asset URLs work on GitHub Pages project sites and local preview.
   base: './',
+  server: {
+    fs: {
+      allow: [
+        searchForWorkspaceRoot(__dirname),
+        localDwgConverter,
+        localDataModel
+      ]
+    }
+  },
   optimizeDeps: {
     // Keep the converter as native ESM so
     // `new URL('./dwg-parser-main.js', import.meta.url)` resolves next to
