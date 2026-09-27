@@ -4,7 +4,7 @@ export const INTEGRATION_SNIPPET = `import {
   AcDbFileType,
   acdbHostApplicationServices
 } from '@mlightcad/data-model'
-import { AcDbDwgConverter } from '@mlight-cad/dwg-converter'
+import { AcDbDwgConverter } from '@mlightcad/dwg-converter'
 
 const converter = new AcDbDwgConverter({
   parserWorkerUrl: '${import.meta.env.BASE_URL}assets/dwg-parser-worker.js',

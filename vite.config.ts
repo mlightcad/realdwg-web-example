@@ -10,7 +10,7 @@ export default defineConfig({
     // `new URL('./dwg-parser-main.js', import.meta.url)` resolves next to
     // dist/dwg-converter.js. Prebundling into .vite/deps breaks that sibling
     // import (main-thread parse fails in `pnpm dev` only).
-    exclude: ['@mlight-cad/dwg-converter']
+    exclude: ['@mlightcad/dwg-converter']
   },
   build: {
     rollupOptions: {
@@ -24,16 +24,16 @@ export default defineConfig({
     viteStaticCopy({
       targets: [
         {
-          src: './node_modules/@mlight-cad/dwg-converter/dist/*-worker.js',
+          src: './node_modules/@mlightcad/dwg-converter/dist/*-worker.js',
           dest: 'assets'
         },
         {
           // Bundled app chunks resolve this as a sibling of import.meta.url.
-          src: './node_modules/@mlight-cad/dwg-converter/dist/dwg-parser-main.js',
+          src: './node_modules/@mlightcad/dwg-converter/dist/dwg-parser-main.js',
           dest: 'assets'
         },
         {
-          src: './node_modules/@mlight-cad/dwg-converter/dist/dwg-codepage-*.bin',
+          src: './node_modules/@mlightcad/dwg-converter/dist/dwg-codepage-*.bin',
           dest: 'assets'
         }
       ]
