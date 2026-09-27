@@ -1,0 +1,7 @@
+# Production hosting is GitHub Pages via .github/workflows/ci.yml.
+# Skip Netlify Deploy Previews on PRs (private GitHub Packages auth is not needed here).
+[context.deploy-preview]
+  ignore = "exit 0"
+
+[context.branch-deploy]
+  ignore = "exit 0"
