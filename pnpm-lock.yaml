@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@mlightcad/data-model':
-        specifier: ^1.14.14
-        version: 1.14.14
+        specifier: ^1.15.19
+        version: 1.15.19
       '@mlightcad/dwg-converter':
-        specifier: ^1.14.14
-        version: 1.14.14(@mlightcad/data-model@1.14.14)
+        specifier: https://npm.pkg.github.com/download/@mlightcad/dwg-converter/1.15.19/ba5ae3d8e724904ad13e9fdd93e3b3a7a273b488
+        version: https://npm.pkg.github.com/download/@mlightcad/dwg-converter/1.15.19/ba5ae3d8e724904ad13e9fdd93e3b3a7a273b488(@mlightcad/data-model@1.15.19)
     devDependencies:
       typescript:
         specifier: ^5.5.2
@@ -187,31 +187,32 @@ packages:
     resolution: {integrity: sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA==}
     engines: {node: '>=8'}
 
-  '@mlightcad/common@1.14.14':
-    resolution: {integrity: sha512-eAAxnWp/0uA6HrhdbQdQgWa/gEyE4hk4X1SNtytRGjSh33qCC2VtPxnwnQRsNwKFTvFJuZ+QeFRg/Eb/uG2Nsg==}
+  '@mlightcad/common@1.15.19':
+    resolution: {integrity: sha512-B2dMgepm1/KC0cInww+CkNFbdRTSybz5UOmqtJ+YKOOgp8+vTLClzfLSRvotNM4PaBJd99lmSQRs2fNinRd9Tw==}
 
-  '@mlightcad/data-model@1.14.14':
-    resolution: {integrity: sha512-TbXcWO1rsmVyhCUsHAW2K36DwujnARU2p28XxkGkAHpVwHjQSaWZGT9/PhDxDM2RUZshLX7hIPqmDV3YliO/Kg==}
+  '@mlightcad/data-model@1.15.19':
+    resolution: {integrity: sha512-Srbfn8BihX2PSq/3CXf6hjMjFVTOAX0vnF3NpVZtFDXFWLnpDM67HIM6BbpIsvGYpXgm3T0z4i0HA5XHWZ/RZg==}
 
-  '@mlightcad/dwg-converter@1.14.14':
-    resolution: {integrity: sha512-q7j1gmGW4bwf0iIDAlnTWfMzt18qATbYkMMzkSzE97UG3vgr3V03InAjb/5NyEeMoRfgdsoKf3z86ZWy5g5RHA==, tarball: https://npm.pkg.github.com/download/@mlightcad/dwg-converter/1.14.14/9e08a16470eade8e9ba720e765260d16fb433f13}
+  '@mlightcad/dwg-converter@https://npm.pkg.github.com/download/@mlightcad/dwg-converter/1.15.19/ba5ae3d8e724904ad13e9fdd93e3b3a7a273b488':
+    resolution: {tarball: https://npm.pkg.github.com/download/@mlightcad/dwg-converter/1.15.19/ba5ae3d8e724904ad13e9fdd93e3b3a7a273b488}
+    version: 1.15.19
     engines: {pnpm: '>=10'}
     peerDependencies:
-      '@mlightcad/data-model': 1.14.14
+      '@mlightcad/data-model': 1.15.19
 
-  '@mlightcad/emf-converter@1.14.14':
-    resolution: {integrity: sha512-8oO+Hc7WbtvXss+p75sjvfILsmO/yEMrIhqNe2z0bjSYSQs89qVARSF+IN636ooPg8hQH/H35mxtDBVwzvFcew==}
+  '@mlightcad/emf-converter@1.15.19':
+    resolution: {integrity: sha512-B6X6DHtrZl54lwM1+THl1z8CiR9fTWSMc5Ebs36kawpYYZtZLdWUi7loY2yTwhLNLsMwuK5cwJxjgfFneKpOPg==}
 
-  '@mlightcad/geometry-engine@3.14.14':
-    resolution: {integrity: sha512-aipR8ZOdHGvmMO7kgMf90nxkdKZot9qMOT7TNJpd51J8C/FjDgbVtGwT+TCjAyrEprRA0ov20DJOEDSvpZxG5g==}
+  '@mlightcad/geometry-engine@3.15.19':
+    resolution: {integrity: sha512-3pxowPjUHOxWhGrSBp32m5QnMQUYJyuVJd4cz68M5yjKh9IY3gfnPhyeEga0JyP9o82CuhjsFNv6yAi+S5W/1w==}
     peerDependencies:
-      '@mlightcad/common': 1.14.14
+      '@mlightcad/common': 1.15.19
 
-  '@mlightcad/graphic-interface@3.14.14':
-    resolution: {integrity: sha512-wX1/CP7VbhvsAQqa+lTngz33hItMzSEVUjOpGQhOIyc0SK43Wed1j1BlGGvcqEjTdlfwMILWtgpPT66lwM0jNQ==}
+  '@mlightcad/graphic-interface@3.15.19':
+    resolution: {integrity: sha512-ZuEtTCxvqjfpoaJM7uAUkATlTE49PGekoXWSeSEGn9w1gKYJreU4ksxkj9VI4h4Ev7xVxBy3Lm5qTBLdCBqnQg==}
     peerDependencies:
-      '@mlightcad/common': 1.14.14
-      '@mlightcad/geometry-engine': 3.14.14
+      '@mlightcad/common': 1.15.19
+      '@mlightcad/geometry-engine': 3.15.19
 
   '@rollup/rollup-android-arm-eabi@4.62.3':
     resolution: {integrity: sha512-c0wdcekXtQvvn5Tsrk/+op/gUArrbWaFduBnTLP2l1cKLSQs4diMWjJw3m6A0DdzT8dAAX95KpkJ3qynCePbmw==}
@@ -603,32 +604,32 @@ snapshots:
 
   '@lukeed/csprng@1.1.0': {}
 
-  '@mlightcad/common@1.14.14':
+  '@mlightcad/common@1.15.19':
     dependencies:
       loglevel: 1.9.2
 
-  '@mlightcad/data-model@1.14.14':
+  '@mlightcad/data-model@1.15.19':
     dependencies:
-      '@mlightcad/common': 1.14.14
-      '@mlightcad/emf-converter': 1.14.14
-      '@mlightcad/geometry-engine': 3.14.14(@mlightcad/common@1.14.14)
-      '@mlightcad/graphic-interface': 3.14.14(@mlightcad/common@1.14.14)(@mlightcad/geometry-engine@3.14.14(@mlightcad/common@1.14.14))
+      '@mlightcad/common': 1.15.19
+      '@mlightcad/emf-converter': 1.15.19
+      '@mlightcad/geometry-engine': 3.15.19(@mlightcad/common@1.15.19)
+      '@mlightcad/graphic-interface': 3.15.19(@mlightcad/common@1.15.19)(@mlightcad/geometry-engine@3.15.19(@mlightcad/common@1.15.19))
       uid: 2.0.2
 
-  '@mlightcad/dwg-converter@1.14.14(@mlightcad/data-model@1.14.14)':
+  '@mlightcad/dwg-converter@https://npm.pkg.github.com/download/@mlightcad/dwg-converter/1.15.19/ba5ae3d8e724904ad13e9fdd93e3b3a7a273b488(@mlightcad/data-model@1.15.19)':
     dependencies:
-      '@mlightcad/data-model': 1.14.14
+      '@mlightcad/data-model': 1.15.19
 
-  '@mlightcad/emf-converter@1.14.14': {}
+  '@mlightcad/emf-converter@1.15.19': {}
 
-  '@mlightcad/geometry-engine@3.14.14(@mlightcad/common@1.14.14)':
+  '@mlightcad/geometry-engine@3.15.19(@mlightcad/common@1.15.19)':
     dependencies:
-      '@mlightcad/common': 1.14.14
+      '@mlightcad/common': 1.15.19
 
-  '@mlightcad/graphic-interface@3.14.14(@mlightcad/common@1.14.14)(@mlightcad/geometry-engine@3.14.14(@mlightcad/common@1.14.14))':
+  '@mlightcad/graphic-interface@3.15.19(@mlightcad/common@1.15.19)(@mlightcad/geometry-engine@3.15.19(@mlightcad/common@1.15.19))':
     dependencies:
-      '@mlightcad/common': 1.14.14
-      '@mlightcad/geometry-engine': 3.14.14(@mlightcad/common@1.14.14)
+      '@mlightcad/common': 1.15.19
+      '@mlightcad/geometry-engine': 3.15.19(@mlightcad/common@1.15.19)
 
   '@rollup/rollup-android-arm-eabi@4.62.3':
     optional: true
