@@ -13,8 +13,8 @@
     "use-local-deps": "node tools/use-local-deps.mjs"
   },
   "dependencies": {
-    "@mlightcad/data-model": "^1.15.19",
-    "@mlightcad/dwg-converter": "https://npm.pkg.github.com/download/@mlightcad/dwg-converter/1.15.19/ba5ae3d8e724904ad13e9fdd93e3b3a7a273b488"
+    "@mlightcad/data-model": "^1.15.22",
+    "@mlightcad/dwg-converter": "https://npm.pkg.github.com/download/@mlightcad/dwg-converter/1.15.22/5cab282f3629579f2faafbe318462b14bc922eb3"
   },
   "devDependencies": {
     "typescript": "^5.5.2",
